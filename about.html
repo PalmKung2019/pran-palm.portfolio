@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | Pran Taewin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">Pran Portfolio<span>.</span></a>
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="works.html">Works</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero about-hero">
+      <div class="hero-image-wrapper">
+        <div class="image-inner">
+          <img src="image/profile1.png" alt="Pran Taewin Profile" loading="lazy">
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <p class="eyebrow">BIO</p>
+        <h1>Hello, I'm <span>Pran</span></h1>
+        <p class="description">
+          A graphic designer dedicated to bridging the gap between artistic vision and commercial impact.
+        </p>
+        <div class="hero-btn-group">
+          <a href="image/Resume-Pran-2025.pdf" target="_blank" class="btn-primary">Download Resume <i
+              class='bx bx-download'></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-philosophy">
+      <div class="philosophy-content">
+        <h2>Philosophy</h2>
+        <p>
+          I believe that design is not just about aesthetics—it's about communication. My approach focuses on creating
+          clear, impactful visuals that tell a story, whether it's for a university campaign or a consumer beverage
+          brand.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer project-footer">
+    <div class="footer-bottom" style="justify-content: center; border-top: none;">
+      <p>&copy; 2026 Pran Taewin. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuIcon = document.querySelector("#menu-icon");
+    const navbar = document.querySelector(".navbar");
+
+    if (menuIcon && navbar) {
+      menuIcon.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+        menuIcon.classList.toggle("bx-x");
+      });
+    }
+  </script>
+</body>
+
+</html>
