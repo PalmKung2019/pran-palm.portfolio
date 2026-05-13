@@ -150,3 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   renderPortfolio();
 });
+
+// เพิ่มต่อท้ายใน script.js
+window.onclick = function(event) {
+  const modal = document.getElementById("imageModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
