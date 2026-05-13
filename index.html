@@ -1,124 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pran Taewin | Graphic Designer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Pran Taewin (Palm) | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 
-<body>
-  <header class="header">
-    <a href="index.html" class="logo">Pran Portfolio<span>.</span></a>
-    <i class="bx bx-menu" id="menu-icon"></i>
-    <nav class="navbar">
-      <a href="index.html" class="active">Home</a>
-      <a href="works.html">Works</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<body class="home-page light-theme">
 
-  <main>
-    <section class="hero home-hero" id="home">
-      <div class="hero-content">
-        <p class="eyebrow">GRAPHIC DESIGNER & CREATIVE</p>
-        <h1>Hi, I'm <span>Pran</span></h1>
-        <p class="description">
-          Translating complex ideas into clean, functional, and beautiful design solutions across print and digital
-          media.
-        </p>
-        <div class="hero-btn-group">
-          <a href="works.html" class="btn-primary">View Portfolio <i class='bx bx-right-arrow-alt'></i></a>
+  <nav class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-accent">PRAN</span>.PALM
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home"><i class="fa-solid fa-house"></i> หน้าหลัก</a></li>
+      <li><a href="#works"><i class="fa-solid fa-layer-group"></i> ผลงาน</a></li>
+      <li><a href="#resume"><i class="fa-solid fa-file-invoice"></i> Resume</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> เกี่ยวกับผม</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section: Swiper -->
+  <div class="swiper-container mySwiper" id="home">
+    <div class="swiper-wrapper">
+      <!-- Slide 1: Thesis -->
+      <div class="swiper-slide">
+        <img src="image/SavorHappiness-Cover.jpg" alt="Savor Happiness Thesis">
+        <div class="slide-content">
+          <div class="slide-info-block">
+            <h1>Savor Happiness</h1>
+            <p>Senior Thesis: Guidebook แนะนำคาเฟ่ 20 แห่ง</p>
+            <div class="slide-cta">
+              <a href="#works" class="btn-cta-green">ดูรายละเอียดผลงาน</a>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="hero-image-wrapper">
-        <div class="image-inner">
-          <img src="image/profile1.png" alt="Pran Taewin" loading="lazy">
+      <!-- Slide 2: Photography -->
+      <div class="swiper-slide">
+        <img src="image/photo1.JPG" alt="Photography">
+        <div class="slide-content">
+          <div class="slide-info-block">
+            <h1>Photography</h1>
+            <p>Visual Storytelling through Nikon D5200</p>
+            <div class="slide-cta">
+              <a href="#works" class="btn-cta-green">ชมคลังภาพ</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="works">
-      <div class="section-title">
-        <h2>Featured Work</h2>
-        <div class="line"></div>
-      </div>
-
-      <div class="project-grid">
-        <a href="savor-happiness.html" class="work-card">
-          <div class="card-image">
-            <img src="image/Savor-Happiness-Logo.jpg" alt="Savor Happiness" loading="lazy">
-          </div>
-          <div class="card-info">
-            <span class="category">Illustration / Publication</span>
-            <h3>Savor Happiness</h3>
-          </div>
-        </a>
-
-        <a href="lolphine-cafe.html" class="work-card">
-          <div class="card-image">
-            <img src="image/LolphineCaféLogo.jpg" alt="Lolphine Cafe" loading="lazy">
-          </div>
-          <div class="card-info">
-            <span class="category">Brand Identity</span>
-            <h3>Lolphine Café</h3>
-          </div>
-        </a>
-
-        <a href="character-design.html" class="work-card">
-          <div class="card-image">
-            <img src="image/Character-1.jpg" alt="Character Design" loading="lazy">
-          </div>
-          <div class="card-info">
-            <span class="category">Character Design</span>
-            <h3>Original Characters</h3>
-          </div>
-        </a>
-
-        <a href="photography.html" class="work-card">
-          <div class="card-image">
-            <img src="image/photo2.jpg" alt="Photography Showcase" loading="lazy">
-          </div>
-          <div class="card-info">
-            <span class="category">Photography</span>
-            <h3>Visual Narratives</h3>
-          </div>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <h3>Pran Taewin<span>.</span></h3>
-        <p>Creating meaningful visual experiences through minimal design.</p>
-      </div>
-      <div class="footer-contact">
-        <h4>Connect</h4>
-        <a href="mailto:palmy1983ch@gmail.com">palmy1983ch@gmail.com</a>
       </div>
     </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!-- Portfolio Grid Section -->
+  <section class="latest-news container" id="works">
+    <div class="news-header">
+      <h2>MY SELECTED WORKS</h2>
+    </div>
+    <div class="news-grid" id="portfolioGrid">
+      <!-- Content generated by script.js -->
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section class="latest-news container" id="resume">
+    <div class="news-header">
+      <h2>MY RESUME</h2>
+    </div>
+    <div class="resume-wrapper">
+      <div class="resume-preview-box">
+        <img src="image/Resume-Pran-2025.png" alt="Resume Preview" class="resume-preview-img">
+      </div>
+      <br>
+      <a href="image/Resume-Pran-2025.pdf" target="_blank" class="btn-orange">
+        <i class="fa-solid fa-download"></i> DOWNLOAD RESUME (PDF)
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="product-banner" id="about">
+    <div class="product-container">
+      <div class="product-image">
+        <img src="image/profile1.png" alt="Pran Taewin">
+      </div>
+      <div class="product-info">
+        <h2>ABOUT ME</h2>
+        <p><b>Pran Taewin (Palm)</b><br>
+          นักศึกษาชั้นปีที่ 4 คณะดิจิทัลมีเดีย มหาวิทยาลัยศรีปทุม (SPU)
+          เชี่ยวชาญด้าน Graphic Design, Photography และ Web Development
+          ผู้ที่หลงใหลในการถ่ายภาพและการสร้างสรรค์คอนเทนต์ดิจิทัลที่มี Mood & Tone ชัดเจน</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/pran.taewin.palm" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+              aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/palmpran/" aria-label="Instagram"><i class="fa-brands fa-instagram"
+              aria-hidden="true"></i></a>
+          <a href="https://github.com/PalmKung2019" aria-label="GitHub"><i class="fa-brands fa-github"
+              aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/@palmprann" aria-label="YouTube"><i class="fa-brands fa-youtube"
+              aria-hidden="true"></i></a>
+        </div>
+        <a href="mailto:palmy1983ch@gmail.com" class="btn-orange">
+          <i class="fa-solid fa-envelope"></i> CONTACT ME
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="vw-footer">
     <div class="footer-bottom">
-      <p>&copy; 2026 Pran Taewin. All rights reserved.</p>
+      <p>&copy; 2026 Pran Taewin (Palm). Digital Media SPU Thesis Project.</p>
     </div>
   </footer>
 
-  <script>
-    const menuIcon = document.querySelector("#menu-icon");
-    const navbar = document.querySelector(".navbar");
-    if (menuIcon && navbar) {
-      menuIcon.addEventListener("click", () => {
-        navbar.classList.toggle("active");
-        menuIcon.classList.toggle("bx-x");
-      });
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
