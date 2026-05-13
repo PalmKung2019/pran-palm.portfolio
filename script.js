@@ -1,4 +1,5 @@
 const portfolioWorks = [
+  // --- งานเดิมของคุณ ---
   {
     name: "Savor Happiness",
     category: "Thesis Project",
@@ -26,6 +27,22 @@ const portfolioWorks = [
     tags: "Character Design / Digital Art",
     desc: "รวมงานวาดภาพประกอบและออกแบบตัวละครในสไตล์ดิจิทัลพ่นสี",
     img: "image/Character-1.jpg",
+  },
+
+  // --- งานชุดใหม่ 6 ภาพ ---
+  {
+    name: "Joonner My - Content Creation",
+    category: "Social Media",
+    tags: "Brand Admin / Graphic Design",
+    desc: "งานออกแบบกราฟิกและอาร์ตเวิร์กโปรโมทสำหรับแบรนด์ Joonner My ในส่วนของการจัดการคอนเทนต์หน้าเพจ",
+    img: "image/image_3a3e7b.png",
+  },
+  {
+    name: "Joonner My - Brand Artwork",
+    category: "Social Media",
+    tags: "Digital Content / Layout",
+    desc: "การจัดวางองค์ประกอบภาพและข้อความ เพื่อสื่อสารเอกลักษณ์ของแบรนด์ Joonner My ให้เข้าถึงกลุ่มเป้าหมาย",
+    img: "image/image_3a3e58.png",
   },
 ];
 
