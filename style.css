@@ -312,7 +312,58 @@ body {
     min-width: 300px;
 }
 
-/* MEDIA QUERIES */
+/* =========================================
+   SOCIAL ICONS (อัปเกรดให้ดูพรีเมียมและมืออาชีพ)
+========================================= */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: rgba(255, 255, 255, 0.05); /* พื้นหลังโปร่งแสงนิดๆ ให้ดูหรู */
+  color: #ffffff; /* บังคับไอคอนให้เป็นสีขาวเสมอ */
+  text-decoration: none;
+  border-radius: 50%; /* ทำให้กรอบเป็นวงกลม */
+  font-size: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15); /* กรอบขาวบางๆ */
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  background-color: var(--accent-color); /* เปลี่ยนพื้นหลังเป็นสีเขียวของแบรนด์ */
+  color: #ffffff; /* ไอคอนยังคงสีขาว */
+  border-color: var(--accent-color);
+  transform: translateY(-5px); /* เอฟเฟกต์ลอยขึ้นนิดนึงตอนเอาเมาส์ชี้ */
+  box-shadow: 0 8px 20px rgba(116, 195, 77, 0.4); /* เรืองแสงสีเขียว */
+}
+
+/* =========================================
+   RESUME SECTION (แก้ไขขนาดรูปภาพ)
+========================================= */
+.resume-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-preview-img {
+  max-width: 100%;
+  width: 400px; /* ขนาดรูป Resume */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูมีมิติ */
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต)
+========================================= */
 @media (max-width: 768px) {
   .navbar {
     padding: 12px 20px;
@@ -344,6 +395,10 @@ body {
     text-align: center;
   }
   
+  .social-icons {
+    justify-content: center; /* จัดไอคอนไว้ตรงกลางในมือถือ */
+  }
+  
   .slide-info-block h1 {
       font-size: 1.8rem;
   }
@@ -363,21 +418,3 @@ body {
         font-size: 14px;
     }
 }
-
-/* =========================================
-   RESUME SECTION (แก้ไขขนาดรูปภาพ)
-========================================= */
-.resume-wrapper {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.resume-preview-img {
-  max-width: 100%;
-  width: 400px; /* ปรับตัวเลขตรงนี้ได้เลยครับ ถ้าอยากให้ใหญ่หรือเล็กกว่านี้ (เช่น 350px หรือ 500px) */
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูมีมิติ */
-  margin-bottom: 25px;
-}
-
