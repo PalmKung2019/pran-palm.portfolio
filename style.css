@@ -371,3 +371,83 @@ body {
     font-size: 32px;
   }
 }
+
+/* --- การปรับแต่งเพิ่มเติมเพื่อ Mobile-First UX/UI --- */
+
+/* 1. ปรับปรุง Navbar ให้รองรับมือถือ (แนะนำให้เพิ่ม Hamburger Menu ในอนาคต) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+  .nav-links {
+    display: none; /* ซ่อนเมนูแบบปกติในมือถือเพื่อประหยัดพื้นที่ */
+  }
+  .navbar .logo {
+    font-size: 20px;
+    margin: 0 auto; /* จัดโลโก้ไว้ตรงกลางสำหรับ Mobile UX */
+  }
+}
+
+/* 2. ปรับ Hero Banner (Swiper) ให้ดูดีทุกขนาดจอ */
+.swiper-container {
+  height: 70vh; /* ใช้ความสูงตามสัดส่วนหน้าจอ */
+  min-height: 400px;
+}
+
+.slide-info-block h1 {
+  font-size: clamp(28px, 5vw, 48px); /* ปรับขนาดฟอนต์อัตโนมัติตามหน้าจอ */
+  padding: 0 20px;
+}
+
+/* 3. ปรับ Portfolio Grid ให้ไหลลื่น (UX: ป้องกัน Card เบียดกัน) */
+.news-grid {
+  display: grid;
+  /* ปรับให้แสดง 1 คอลัมน์ในมือถือ และเพิ่มขึ้นตามความกว้างหน้าจอ */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .news-grid {
+    grid-template-columns: 1fr; /* 1 คอลัมน์เต็มหน้าจอในมือถือจิ๋ว */
+  }
+}
+
+/* 4. ปรับ Modal รูปภาพให้เต็มตาบนมือถือ (UI: Touch Friendly) */
+.modal-content {
+  width: 95%; /* ขยายให้เกือบเต็มจอในมือถือ */
+  max-width: 900px;
+  padding: 15px;
+}
+
+#expandedImg {
+  max-height: 70vh; /* เพิ่มพื้นที่แสดงรูปให้ใหญ่ขึ้น */
+}
+
+/* 5. ปรับส่วน About Me ให้ Responsive */
+.product-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* ให้สลับมาต่อแถวกันเมื่อจอแคบ */
+  justify-content: center;
+  text-align: left;
+}
+
+@media (max-width: 850px) {
+  .product-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-image img {
+    width: 200px; /* ลดขนาดรูปลงในมือถือ */
+    margin-bottom: 20px;
+  }
+}
+
+/* 6. เพิ่มปุ่มกด (Buttons) ให้ขนาดพอดีกับนิ้วสัมผัส (UX) */
+.btn-orange, .btn-cta-green, .btn-submit {
+  min-height: 44px; /* ขนาดมาตรฐานสำหรับนิ้วกด */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
