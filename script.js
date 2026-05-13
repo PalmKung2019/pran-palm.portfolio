@@ -5,7 +5,7 @@ const portfolioWorks = [
     tags: "Layout / Branding / InDesign",
     desc: "หนังสือไกด์บุ๊ก 126 หน้า แนะนำคาเฟ่ 20 แห่ง",
     img: "image/SavorHappiness_cover.webp",
-    link: "https://savor-happiness-guide.pages.dev/", // เพิ่มลิงก์ตรงนี้
+    link: "https://savor-happiness-guide.pages.dev/",
     gallery: [
       "image/SavorHappiness-Cover.webp",
       "image/SavorHappiness-Back.webp",
@@ -82,11 +82,10 @@ function renderPortfolio() {
   if (!grid) return;
   grid.innerHTML = "";
   portfolioWorks.forEach((work) => {
-    // ตรวจสอบว่างานนี้มีลิงก์หรือไม่ ถ้ามีให้สร้างปุ่ม
     let linkHtml = "";
     if (work.link) {
       linkHtml = `
-        <a href="${work.link}" target="_blank" class="project-link-btn" onclick="event.stopPropagation()" style="display: inline-block; margin-top: 10px; padding: 6px 12px; background-color: var(--accent-color); color: #fff; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: 600;">
+        <a href="${work.link}" target="_blank" class="project-link-btn" onclick="event.stopPropagation()" style="background-color: var(--accent-color); color: #fff; margin-top: 10px; font-size: 14px;">
           <i class="fa-solid fa-globe"></i> Visit Website
         </a>
       `;
@@ -98,15 +97,18 @@ function renderPortfolio() {
     card.onclick = () => openModal(work.gallery, work.name);
     card.innerHTML = `
       <div class="news-image-wrapper">
-        <img src="${work.img}" alt="${work.name}">
+        <img src="${work.img}" alt="${work.name}" loading="lazy">
         <span class="news-badge">${work.category}</span>
       </div>
       <div class="news-content">
         <h3>${work.name}</h3>
         <p>${work.desc}</p>
-        ${linkHtml} <small style="color:var(--accent-color); font-weight:600; display:block; margin-top:10px;">
-          <i class="fa-solid fa-images"></i> ดูรูปเพิ่มเติม (${work.gallery.length} รูป)
-        </small>
+        <div style="margin-top:auto;">
+            ${linkHtml}
+            <small style="color:var(--accent-color); font-weight:600; display:block; margin-top:10px;">
+              <i class="fa-solid fa-images"></i> ดูรูปเพิ่มเติม (${work.gallery.length} รูป)
+            </small>
+        </div>
       </div>
     `;
     grid.appendChild(card);
@@ -117,7 +119,9 @@ function openModal(images, title) {
   currentImages = images;
   currentIndex = 0;
   currentTitle = title;
-  document.getElementById("imageModal").style.display = "flex";
+  const modal = document.getElementById("imageModal");
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden"; // Prevent background scroll
   updateModal();
 }
 
@@ -128,33 +132,53 @@ function updateModal() {
     `Image ${currentIndex + 1} of ${currentImages.length}`;
 }
 
-document.getElementById("nextImg").onclick = () => {
+document.getElementById("nextImg").onclick = (e) => {
+  e.stopPropagation();
   currentIndex = (currentIndex + 1) % currentImages.length;
   updateModal();
 };
 
-document.getElementById("prevImg").onclick = () => {
+document.getElementById("prevImg").onclick = (e) => {
+  e.stopPropagation();
   currentIndex =
     (currentIndex - 1 + currentImages.length) % currentImages.length;
   updateModal();
 };
 
-document.getElementById("closeModal").onclick = () => {
+function closeModal() {
   document.getElementById("imageModal").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+
+document.getElementById("closeModal").onclick = closeModal;
+
+// UX: Close modal on background click
+window.onclick = function(event) {
+  const modal = document.getElementById("imageModal");
+  const navLinks = document.getElementById("mobile-menu").nextElementSibling;
+  
+  if (event.target == modal) {
+    closeModal();
+  }
+  
+  // Close mobile menu if clicked outside
+  if (!event.target.closest('.navbar')) {
+      navLinks.classList.remove('active');
+  }
+};
+
+// Mobile Menu Toggle
+document.getElementById("mobile-menu").onclick = function() {
+    this.nextElementSibling.classList.toggle('active');
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  new Swiper(".mySwiper", {
-    loop: true,
-    pagination: { el: ".swiper-pagination", clickable: true },
-  });
+  if (typeof Swiper !== 'undefined') {
+      new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 5000 },
+        pagination: { el: ".swiper-pagination", clickable: true },
+      });
+  }
   renderPortfolio();
 });
-
-// เพิ่มต่อท้ายใน script.js
-window.onclick = function(event) {
-  const modal = document.getElementById("imageModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
