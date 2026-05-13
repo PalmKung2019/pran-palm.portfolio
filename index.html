@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pran Taewin (Palm) | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<nav class="navbar">
+  <a href="index.html" class="logo"><span class="logo-accent">PRAN</span>.PALM</a>
+  </nav>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="home-page light-theme">
 
   <nav class="navbar">
-    <a href="index.html" class="logo"><span class="logo-accent">PRAN</span>.PALM</a>
+    <a href="index.html" class="logo">
+      <span class="logo-accent">PRAN</span>.PALM
+    </a>
     <ul class="nav-links">
-      <li><a href="#home">หน้าหลัก</a></li>
-      <li><a href="#works">ผลงาน</a></li>
-      <li><a href="#resume">Resume</a></li>
-      <li><a href="#about">เกี่ยวกับผม</a></li>
+      <li><a href="#home"><i class="fa-solid fa-house"></i> หน้าหลัก</a></li>
+      <li><a href="#works"><i class="fa-solid fa-layer-group"></i> ผลงาน</a></li>
+      <li><a href="#resume"><i class="fa-solid fa-file-invoice"></i> Resume</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> เกี่ยวกับผม</a></li>
     </ul>
   </nav>
 
   <div class="swiper-container mySwiper" id="home">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="image/Bannner.webp" alt="Banner">
+        <img src="image/Bannner.webp" alt="Main Banner">
         <div class="slide-content">
           <div class="slide-info-block">
             <h1>Graphic Designer & Creator</h1>
+            <p>ผสมผสานศิลปะและการสื่อสารผ่าน Mood & Tone ที่ชัดเจน</p>
             <div class="slide-cta"><a href="#works" class="btn-cta-green">ดูผลงานทั้งหมด</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="image/SavorHappiness-Cover.webp" alt="Savor Happiness">
+        <div class="slide-content">
+          <div class="slide-info-block">
+            <h1>Savor Happiness</h1>
+            <p>Senior Thesis: Guidebook แนะนำคาเฟ่ 20 แห่ง</p>
+            <div class="slide-cta"><a href="#works" class="btn-cta-green">รายละเอียดเล่ม</a></div>
           </div>
         </div>
       </div>
@@ -35,15 +54,20 @@
     <div class="swiper-pagination"></div>
   </div>
 
-  <section class="container" id="works">
-    <div class="news-header"><h2>MY SELECTED WORKS</h2></div>
+  <section class="latest-news container" id="works">
+    <div class="news-header">
+      <h2>MY SELECTED WORKS</h2>
+    </div>
     <div class="news-grid" id="portfolioGrid"></div>
   </section>
 
   <div id="imageModal" class="vw-modal">
     <span class="close-modal" id="closeModal">&times;</span>
     <div class="modal-content">
-      <h2 id="modalTitle"></h2>
+      <div class="modal-header">
+        <h2 id="modalTitle">Project Title</h2>
+        <p id="modalCount">Image 1 of X</p>
+      </div>
       <img id="expandedImg" src="" alt="Full view">
       <div class="modal-nav-row">
         <button class="btn-submit" id="prevImg">PREVIOUS</button>
@@ -52,7 +76,43 @@
     </div>
   </div>
 
+  <section class="latest-news container" id="resume">
+    <div class="news-header">
+      <h2>MY RESUME</h2>
+    </div>
+    <div class="resume-wrapper">
+      <img src="image/Resume-Pran-2025.webp" alt="Resume Preview" class="resume-preview-img">
+      <br>
+      <a href="image/Resume-Pran-2025.pdf" target="_blank" class="btn-orange">DOWNLOAD RESUME (PDF)</a>
+    </div>
+  </section>
+
+  <section class="product-banner" id="about">
+    <div class="product-container">
+      <div class="product-image"><img src="image/Author_Palm.webp" alt="Pran Taewin"></div>
+      <div class="product-info">
+        <h2>ABOUT ME</h2>
+        <p><b>Pran Taewin (Palm)</b><br>นักศึกษาชั้นปีที่ 4 คณะดิจิทัลมีเดีย SPU เชี่ยวชาญด้าน Graphic Design,
+          Photography และ Web Development</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/pran.taewin.palm" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/palmpran/" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://github.com/PalmKung2019" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/@palmprann" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        </div>
+        <a href="mailto:palmy1983ch@gmail.com" class="btn-orange">CONTACT ME</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="vw-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pran Taewin (Palm). Digital Media SPU.</p>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
