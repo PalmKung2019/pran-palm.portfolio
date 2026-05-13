@@ -10,9 +10,9 @@
   --text-main: #1A3011;
   --text-muted: #487A2F;
   --border-color: #d5e0d8;
-  --cost-color: #D04539;
   --shadow-light: rgba(116, 195, 77, 0.15);
-  --modal-overlay: rgba(235, 235, 235, 0.9);
+  --modal-overlay: rgba(0, 0, 0, 0.85);
+  --transition: all 0.3s ease;
 }
 
 * {
@@ -59,6 +59,12 @@ body {
   color: var(--text-main);
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -70,17 +76,18 @@ body {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 600;
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
 .nav-links li a:hover {
   color: var(--accent-color);
 }
 
-/* SWIPER HERO */
+/* HERO BANNER (Responsive) */
 .swiper-container {
   width: 100%;
-  height: 600px;
+  height: 70vh;
+  min-height: 450px;
   position: relative;
   overflow: hidden;
   background: #000;
@@ -90,7 +97,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .slide-content {
@@ -103,6 +110,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 10;
+  padding: 20px;
 }
 
 .slide-info-block {
@@ -111,60 +119,50 @@ body {
 }
 
 .slide-info-block h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 15px;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
 }
 
 .slide-info-block p {
-  font-size: 20px;
+  font-size: clamp(1rem, 2vw, 1.4rem);
   margin-bottom: 30px;
 }
 
-.btn-cta-green {
-  background: var(--accent-color);
-  color: #fff;
-  padding: 12px 30px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 700;
-  transition: 0.3s;
-}
-
-.btn-cta-green:hover {
-  background: var(--accent-hover);
-}
-
-/* GRID CARDS */
+/* GRID CARDS (Responsive & UX) */
 .news-header h2 {
   text-align: center;
-  font-size: 32px;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin-bottom: 40px;
   color: var(--text-main);
 }
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
 }
 
 .news-card {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  text-decoration: none;
-  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .news-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px var(--shadow-light);
 }
 
 .news-image-wrapper {
   position: relative;
-  height: 250px;
+  height: 230px;
 }
 
 .news-image-wrapper img {
@@ -175,31 +173,118 @@ body {
 
 .news-badge {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
+  top: 15px;
+  right: 15px;
   background: var(--accent-color);
   color: #fff;
-  padding: 5px 12px;
-  font-size: 12px;
+  padding: 4px 12px;
+  font-size: 11px;
   font-weight: 700;
-  border-radius: 3px;
+  border-radius: 20px;
+  text-transform: uppercase;
 }
 
 .news-content {
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .news-content h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  font-size: 1.3rem;
   color: var(--text-main);
 }
 
 .news-content p {
-  color: #666;
-  font-size: 14px;
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
 }
 
-/* ABOUT BANNER */
+/* BUTTONS (UX: Touch Targets) */
+.btn-cta-green, .btn-orange, .btn-submit, .project-link-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cta-green {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.btn-cta-green:hover {
+  background: var(--accent-hover);
+}
+
+.btn-orange {
+  background: var(--accent-color);
+  color: #fff;
+  border-radius: 50px;
+}
+
+/* MODAL (Responsive UX) */
+.vw-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-overlay);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+}
+
+#expandedImg {
+  width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.modal-nav-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* ABOUT SECTION (Responsive Layout) */
 .product-banner {
   background: #111;
   color: #fff;
@@ -212,242 +297,69 @@ body {
   display: flex;
   align-items: center;
   gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .product-image img {
-  width: 300px;
+  width: 280px;
   border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.product-info h2 {
-  font-size: 36px;
-  color: var(--accent-color);
-  margin-bottom: 20px;
+.product-info {
+    flex: 1;
+    min-width: 300px;
 }
 
-.product-info p {
-  font-size: 18px;
-  margin-bottom: 30px;
-  color: #ccc;
-}
-
-.btn-orange {
-  background: var(--accent-color);
-  color: #fff;
-  padding: 15px 35px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 700;
-  display: inline-block;
-}
-
-.social-icons {
-  margin-bottom: 20px;
-}
-
-.social-icons a {
-  color: #fff;
-  font-size: 20px;
-  margin-right: 15px;
-}
-
-/* LOGO */
-.logo-accent {
-  color: var(--accent-color);
-}
-
-/* RESUME SECTION */
-.resume-wrapper {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.resume-preview-box {
-  display: inline-block;
-  padding: 15px;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 25px;
-}
-
-.resume-preview-img {
-  max-width: 100%;
-  width: 350px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-bottom: 25px;
-}
-
-/* ==================================================
-   หน้าต่าง Modal สำหรับดูรูป (แก้ไขรูปใหญ่ล้นจอ)
-================================================== */
-.vw-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 20px;
-  /* ลด padding ลงนิดหน่อยให้มีพื้นที่โชว์รูปมากขึ้น */
-  border-radius: 15px;
-  max-width: 700px;
-  /* จำกัดความกว้างสูงสุด */
-  width: 90%;
-  text-align: center;
-  max-height: 90vh;
-  /* บังคับไม่ให้กล่องทะลุความสูงหน้าจอ */
-  overflow-y: auto;
-  /* ถ้าเนื้อหายาวไป ให้ไถเลื่อนลงได้ */
-}
-
-.close-modal {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  color: #fff;
-  font-size: 40px;
-  cursor: pointer;
-  z-index: 10000;
-}
-
-#modalTitle {
-  color: var(--text-main);
-  margin-bottom: 5px;
-  font-size: 22px;
-}
-
-#modalCount {
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-/* 🌟 จุดสำคัญ: ควบคุมขนาดรูปภาพ 🌟 */
-#expandedImg {
-  width: 100%;
-  max-height: 55vh;
-  /* บังคับรูปไม่ให้สูงเกิน 55% ของหน้าจอ */
-  object-fit: contain;
-  /* บีบรูปลงมาให้เห็นครบทั้งภาพ โดยสัดส่วนไม่เพี้ยน */
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  /* ใส่พื้นหลังอ่อนๆ กันรูปโปร่งใส */
-}
-
-/* ปุ่มกดเปลี่ยนรูป */
-.modal-btn-group {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.modal-btn-group .btn-submit {
-  width: 100%;
-  padding: 12px;
-}
-
+/* MEDIA QUERIES */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none; /* Mobile menu can be added via JS */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+  
+  .nav-links.active {
+      display: flex;
+  }
+
   .product-container {
     flex-direction: column;
     text-align: center;
   }
-
-  .nav-links {
-    display: none;
-  }
-
+  
   .slide-info-block h1 {
-    font-size: 32px;
+      font-size: 1.8rem;
   }
-}
-
-/* --- การปรับแต่งเพิ่มเติมเพื่อ Mobile-First UX/UI --- */
-
-/* 1. ปรับปรุง Navbar ให้รองรับมือถือ (แนะนำให้เพิ่ม Hamburger Menu ในอนาคต) */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 20px;
-  }
-  .nav-links {
-    display: none; /* ซ่อนเมนูแบบปกติในมือถือเพื่อประหยัดพื้นที่ */
-  }
-  .navbar .logo {
-    font-size: 20px;
-    margin: 0 auto; /* จัดโลโก้ไว้ตรงกลางสำหรับ Mobile UX */
-  }
-}
-
-/* 2. ปรับ Hero Banner (Swiper) ให้ดูดีทุกขนาดจอ */
-.swiper-container {
-  height: 70vh; /* ใช้ความสูงตามสัดส่วนหน้าจอ */
-  min-height: 400px;
-}
-
-.slide-info-block h1 {
-  font-size: clamp(28px, 5vw, 48px); /* ปรับขนาดฟอนต์อัตโนมัติตามหน้าจอ */
-  padding: 0 20px;
-}
-
-/* 3. ปรับ Portfolio Grid ให้ไหลลื่น (UX: ป้องกัน Card เบียดกัน) */
-.news-grid {
-  display: grid;
-  /* ปรับให้แสดง 1 คอลัมน์ในมือถือ และเพิ่มขึ้นตามความกว้างหน้าจอ */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
 }
 
 @media (max-width: 480px) {
-  .news-grid {
-    grid-template-columns: 1fr; /* 1 คอลัมน์เต็มหน้าจอในมือถือจิ๋ว */
-  }
-}
-
-/* 4. ปรับ Modal รูปภาพให้เต็มตาบนมือถือ (UI: Touch Friendly) */
-.modal-content {
-  width: 95%; /* ขยายให้เกือบเต็มจอในมือถือ */
-  max-width: 900px;
-  padding: 15px;
-}
-
-#expandedImg {
-  max-height: 70vh; /* เพิ่มพื้นที่แสดงรูปให้ใหญ่ขึ้น */
-}
-
-/* 5. ปรับส่วน About Me ให้ Responsive */
-.product-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* ให้สลับมาต่อแถวกันเมื่อจอแคบ */
-  justify-content: center;
-  text-align: left;
-}
-
-@media (max-width: 850px) {
-  .product-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .product-image img {
-    width: 200px; /* ลดขนาดรูปลงในมือถือ */
-    margin-bottom: 20px;
-  }
-}
-
-/* 6. เพิ่มปุ่มกด (Buttons) ให้ขนาดพอดีกับนิ้วสัมผัส (UX) */
-.btn-orange, .btn-cta-green, .btn-submit {
-  min-height: 44px; /* ขนาดมาตรฐานสำหรับนิ้วกด */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        padding: 10px;
+    }
+    
+    .btn-submit {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
 }
