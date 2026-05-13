@@ -4,10 +4,23 @@ const portfolioWorks = [
     category: "Editorial Design",
     tags: "Layout / Branding / InDesign",
     desc: "หนังสือไกด์บุ๊ก 126 หน้า แนะนำคาเฟ่ 20 แห่ง",
-    img: "image/SavorHappiness-Cover.webp",
+    img: "image/SavorHappiness_cover.webp",
+    link: "https://savor-happiness-guide.pages.dev/", // เพิ่มลิงก์ตรงนี้
     gallery: [
       "image/SavorHappiness-Cover.webp",
       "image/SavorHappiness-Back.webp",
+      "image/SavorHappiness-Book_Mockup.webp",
+      "image/SavorHappiness-Inside1.webp",
+      "image/SavorHappiness-Inside2.webp",
+      "image/SavorHappiness-AllMerch.webp",
+      "image/SavorHappiness-collage-small.webp",
+      "image/SavorHappiness-Sticker1.webp",
+      "image/SavorHappiness-Postcards.webp",
+      "image/SavorHappiness-PostcardMinburi.webp",
+      "image/SavorHappiness-PostcardNongchok.webp",
+      "image/SavorHappiness-Mug_Mockup_1.webp",
+      "image/SavorHappiness-Mug_Mockup_2.webp",
+      "image/SavorHappiness-Fashion.webp",
       "image/Savor-Happiness-Logo.webp",
     ],
   },
@@ -69,6 +82,16 @@ function renderPortfolio() {
   if (!grid) return;
   grid.innerHTML = "";
   portfolioWorks.forEach((work) => {
+    // ตรวจสอบว่างานนี้มีลิงก์หรือไม่ ถ้ามีให้สร้างปุ่ม
+    let linkHtml = "";
+    if (work.link) {
+      linkHtml = `
+        <a href="${work.link}" target="_blank" class="project-link-btn" onclick="event.stopPropagation()" style="display: inline-block; margin-top: 10px; padding: 6px 12px; background-color: var(--accent-color); color: #fff; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: 600;">
+          <i class="fa-solid fa-globe"></i> Visit Website
+        </a>
+      `;
+    }
+
     const card = document.createElement("div");
     card.className = "news-card";
     card.style.cursor = "pointer";
@@ -81,7 +104,7 @@ function renderPortfolio() {
       <div class="news-content">
         <h3>${work.name}</h3>
         <p>${work.desc}</p>
-        <small style="color:var(--accent-color); font-weight:600; display:block; margin-top:10px;">
+        ${linkHtml} <small style="color:var(--accent-color); font-weight:600; display:block; margin-top:10px;">
           <i class="fa-solid fa-images"></i> ดูรูปเพิ่มเติม (${work.gallery.length} รูป)
         </small>
       </div>

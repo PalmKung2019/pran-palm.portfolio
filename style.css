@@ -279,31 +279,9 @@ body {
   margin-bottom: 25px;
 }
 
-/* MODAL */
-#expandedImg {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.modal-nav-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-#prevImg,
-#nextImg {
-  width: 45%;
-}
-
-.vw-footer {
-  padding: 30px;
-  text-align: center;
-  background: #000;
-  color: #666;
-  font-size: 13px;
-}
-
+/* ==================================================
+   หน้าต่าง Modal สำหรับดูรูป (แก้ไขรูปใหญ่ล้นจอ)
+================================================== */
 .vw-modal {
   display: none;
   position: fixed;
@@ -319,31 +297,64 @@ body {
 
 .modal-content {
   background: #fff;
-  padding: 30px;
+  padding: 20px;
+  /* ลด padding ลงนิดหน่อยให้มีพื้นที่โชว์รูปมากขึ้น */
   border-radius: 15px;
-  max-width: 600px;
+  max-width: 700px;
+  /* จำกัดความกว้างสูงสุด */
   width: 90%;
   text-align: center;
+  max-height: 90vh;
+  /* บังคับไม่ให้กล่องทะลุความสูงหน้าจอ */
+  overflow-y: auto;
+  /* ถ้าเนื้อหายาวไป ให้ไถเลื่อนลงได้ */
 }
 
 .close-modal {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 15px;
+  right: 25px;
   color: #fff;
   font-size: 40px;
   cursor: pointer;
+  z-index: 10000;
 }
 
 #modalTitle {
   color: var(--text-main);
   margin-bottom: 5px;
+  font-size: 22px;
 }
 
 #modalCount {
   color: #888;
   font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* 🌟 จุดสำคัญ: ควบคุมขนาดรูปภาพ 🌟 */
+#expandedImg {
+  width: 100%;
+  max-height: 55vh;
+  /* บังคับรูปไม่ให้สูงเกิน 55% ของหน้าจอ */
+  object-fit: contain;
+  /* บีบรูปลงมาให้เห็นครบทั้งภาพ โดยสัดส่วนไม่เพี้ยน */
+  border-radius: 10px;
   margin-bottom: 20px;
+  background-color: #f5f5f5;
+  /* ใส่พื้นหลังอ่อนๆ กันรูปโปร่งใส */
+}
+
+/* ปุ่มกดเปลี่ยนรูป */
+.modal-btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-btn-group .btn-submit {
+  width: 100%;
+  padding: 12px;
 }
 
 @media (max-width: 768px) {
