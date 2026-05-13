@@ -363,3 +363,21 @@ body {
         font-size: 14px;
     }
 }
+
+/* =========================================
+   RESUME SECTION (แก้ไขขนาดรูปภาพ)
+========================================= */
+.resume-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resume-preview-img {
+  max-width: 100%;
+  width: 400px; /* ปรับตัวเลขตรงนี้ได้เลยครับ ถ้าอยากให้ใหญ่หรือเล็กกว่านี้ (เช่น 350px หรือ 500px) */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูมีมิติ */
+  margin-bottom: 25px;
+}
+
