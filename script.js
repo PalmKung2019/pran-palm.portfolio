@@ -101,23 +101,25 @@ function renderPortfolio() {
         <span class="news-badge">${work.category}</span>
       </div>
       <div class="news-content">
-        <h3>${work.name}</h3>
-        <p>${work.desc}</p>
-        <div style="margin-top:auto;">
+        <div class="news-text-wrapper">
+          <h3>${work.name}</h3>
+          <p>${work.desc}</p>
+        </div>
+        <div class="news-card-actions">
             ${linkHtml}
-            <small style="color:var(--accent-blue,#0071e3); font-weight:600; display:block; margin-top:10px;">
+            <small class="more-photos-link">
               <i class="fa-solid fa-images"></i> ดูรูปเพิ่มเติม (${work.gallery.length} รูป)
             </small>
         </div>
       </div>
     `;
     // Mouse-tracking shimmer micro-interaction
-    card.addEventListener('mousemove', (e) => {
+    card.addEventListener("mousemove", (e) => {
       const rect = card.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
+      card.style.setProperty("--mx", x + "%");
+      card.style.setProperty("--my", y + "%");
     });
     grid.appendChild(card);
   });
@@ -161,27 +163,27 @@ function closeModal() {
 document.getElementById("closeModal").onclick = closeModal;
 
 // UX: Close modal on background click
-window.onclick = function(event) {
+window.onclick = function (event) {
   const modal = document.getElementById("imageModal");
   const navLinks = document.getElementById("mobile-menu").nextElementSibling;
-  
+
   if (event.target == modal) {
     closeModal();
   }
-  
+
   // Close mobile menu if clicked outside
-  if (!event.target.closest('.navbar')) {
-      navLinks.classList.remove('active');
+  if (!event.target.closest(".navbar")) {
+    navLinks.classList.remove("active");
   }
 };
 
 // Mobile Menu Toggle
-document.getElementById("mobile-menu").onclick = function() {
-    this.nextElementSibling.classList.toggle('active');
+document.getElementById("mobile-menu").onclick = function () {
+  this.nextElementSibling.classList.toggle("active");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (typeof Swiper !== 'undefined') {
+  if (typeof Swiper !== "undefined") {
     new Swiper(".mySwiper", {
       loop: true,
       autoplay: { delay: 5000 },
@@ -191,33 +193,40 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPortfolio();
 
   // ── Scroll-Reveal (IntersectionObserver) ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
 
   // Observe static reveal elements
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  document
+    .querySelectorAll(".reveal")
+    .forEach((el) => revealObserver.observe(el));
 
   // Observe dynamically-added cards with staggered delay
-  const grid = document.getElementById('portfolioGrid');
+  const grid = document.getElementById("portfolioGrid");
   if (grid) {
-    const cards = grid.querySelectorAll('.news-card');
+    const cards = grid.querySelectorAll(".news-card");
     cards.forEach((card, i) => {
-      card.style.transitionDelay = (i * 0.08) + 's';
+      card.style.transitionDelay = i * 0.08 + "s";
       revealObserver.observe(card);
     });
   }
 
   // ── Add reveal class to static sections ──
-  document.querySelectorAll(
-    '.news-header, .resume-wrapper, .product-container, .vw-footer'
-  ).forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
+  document
+    .querySelectorAll(
+      ".news-header, .resume-wrapper, .product-container, .vw-footer",
+    )
+    .forEach((el) => {
+      el.classList.add("reveal");
+      revealObserver.observe(el);
+    });
 });
