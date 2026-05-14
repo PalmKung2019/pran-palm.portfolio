@@ -50,10 +50,12 @@ html, body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-main);
   color: var(--text-main);
-  margin: 0; padding: 0;
-  padding-top: 52px; /* offset for fixed navbar */
+  margin: 0;
+  padding: 0;
+  padding-top: 25px; /* offset for fixed navbar */
   line-height: 1.6;
-  width: 100%; max-width: 100%;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden !important;
   overscroll-behavior-x: none;
   -webkit-font-smoothing: antialiased;
