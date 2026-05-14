@@ -15,11 +15,11 @@
   --transition: all 0.3s ease;
 }
 
-* {
+/* 🌟 บังคับให้การคำนวณความกว้างรวม padding เสมอ ไม่ให้บวกเพิ่มจนล้นจอ 🌟 */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* 🌟🌟🌟 มาตรการขั้นเด็ดขาด: ล็อกหน้าจอไม่ให้เลื่อนซ้ายขวา 100% 🌟🌟🌟 */
 html, body {
   scroll-behavior: smooth;
   font-family: 'Prompt', sans-serif;
@@ -29,16 +29,22 @@ html, body {
   padding: 0;
   line-height: 1.6;
   width: 100%;
-  max-width: 100%; /* ห้ามกว้างเกินจอเด็ดขาด */
-  overflow-x: hidden !important; /* บังคับตัดส่วนที่ล้นทิ้ง */
-  overscroll-behavior-x: none; /* ปิดเอฟเฟกต์ยางยืดเด้งซ้ายขวาในมือถือ */
+  max-width: 100%; 
+  overflow-x: hidden !important; 
+  overscroll-behavior-x: none; 
   position: relative;
 }
 
-/* ล็อกตัวหนังสือไม่ให้ยาวทะลุจอจนดันให้เกิดแถบเลื่อน */
 p, h1, h2, h3, h4, h5, h6, span, a {
   word-wrap: break-word;
   overflow-wrap: break-word;
+  max-width: 100%; /* ป้องกันตัวหนังสือยาวทะลุจอ */
+}
+
+/* ป้องกันภาพล้นขอบ */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .container {
@@ -46,7 +52,6 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   margin: 0 auto;
   padding: 60px 20px;
   width: 100%;
-  overflow: hidden; /* ล็อกคอนเทนเนอร์อีกชั้น */
 }
 
 /* NAVBAR */
@@ -62,7 +67,6 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   top: 0;
   z-index: 1000;
   width: 100%;
-  max-width: 100vw;
 }
 
 .navbar .logo {
@@ -70,6 +74,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   font-weight: 700;
   text-decoration: none;
   color: var(--text-main);
+  white-space: nowrap; /* ป้องกันโลโก้แตกบรรทัด */
 }
 
 .menu-toggle {
@@ -83,6 +88,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   display: flex;
   gap: 30px;
   margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
@@ -99,12 +105,15 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 /* HERO BANNER */
 .swiper-container {
   width: 100%;
-  max-width: 100%;
   height: 70vh;
   min-height: 450px;
   position: relative;
-  overflow: hidden !important; /* บังคับไม่ให้สไลด์ล้นออกด้านข้าง */
+  overflow: hidden !important; 
   background: #000;
+}
+
+.swiper-slide {
+  width: 100% !important; /* บังคับสไลด์ให้กว้างพอดี */
 }
 
 .swiper-slide img {
@@ -156,7 +165,8 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* 🌟 ลดขนาดการ์ดลงมานิดนึงเพื่อความชัวร์ 🌟 */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 25px;
   width: 100%;
 }
@@ -170,6 +180,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%; /* ล็อกความกว้างการ์ด */
 }
 
 .news-card:hover {
@@ -180,6 +191,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 .news-image-wrapper {
   position: relative;
   height: 230px;
+  width: 100%;
 }
 
 .news-image-wrapper img {
@@ -233,7 +245,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   transition: var(--transition);
   cursor: pointer;
   border: none;
-  max-width: 100%; /* กันปุ่มกว้างเกินจอ */
+  max-width: 100%; 
 }
 
 .btn-cta-green { background: var(--accent-color); color: #fff; }
@@ -297,7 +309,6 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   color: #fff;
   padding: 80px 20px;
   width: 100%;
-  overflow: hidden;
 }
 
 .product-container {
@@ -308,6 +319,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .product-image img {
@@ -320,6 +332,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 .product-info {
     flex: 1;
     width: 100%;
+    min-width: 0; /* อนุญาตให้หดตัวได้ */
 }
 
 /* SOCIAL ICONS */
@@ -327,7 +340,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
   display: flex;
   gap: 15px;
   margin-bottom: 30px;
-  flex-wrap: wrap; /* ยอมให้ตกบรรทัดถ้าจอแคบมากๆ */
+  flex-wrap: wrap; 
 }
 
 .social-icons a {
@@ -357,6 +370,7 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 .resume-wrapper {
   text-align: center;
   margin-top: 20px;
+  width: 100%;
 }
 
 .resume-preview-img {
@@ -404,6 +418,10 @@ p, h1, h2, h3, h4, h5, h6, span, a {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 40px 15px; /* ลดระยะขอบในมือถือลง */
+    }
+
     .news-grid {
         grid-template-columns: 1fr;
     }
