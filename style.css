@@ -19,17 +19,17 @@
   box-sizing: border-box;
 }
 
-html {
+/* 🌟 สำคัญมาก: ป้องกันการเลื่อนซ้ายขวาที่ทำให้เมนูพัง 🌟 */
+html, body {
   scroll-behavior: smooth;
-}
-
-body {
   font-family: 'Prompt', sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden; 
 }
 
 .container {
@@ -50,6 +50,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%; /* ล็อกความกว้าง */
 }
 
 .navbar .logo {
@@ -110,11 +111,11 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-end; /* เปลี่ยนจาก center เป็น flex-end เพื่อให้ตกลงมาด้านล่าง */
+  align-items: flex-end; 
   justify-content: center;
   z-index: 10;
   padding: 20px;
-  padding-bottom: 80px; /* ระยะห่างจากขอบล่าง (สามารถปรับตัวเลข 80px มากหรือน้อยได้ตามต้องการครับ) */
+  padding-bottom: 80px; 
 }
 
 .slide-info-block {
@@ -144,7 +145,8 @@ body {
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* 🌟 ลดขนาดขั้นต่ำลงมาเป็น 260px เพื่อไม่ให้ดันจอมือถือแตก 🌟 */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 25px;
 }
 
@@ -313,7 +315,7 @@ body {
 
 .product-info {
     flex: 1;
-    min-width: 300px;
+    width: 100%; /* 🌟 เปลี่ยนจาก min-width เป็น width: 100% ป้องกันมือถือแตก 🌟 */
 }
 
 /* =========================================
@@ -331,21 +333,21 @@ body {
   justify-content: center;
   width: 45px;
   height: 45px;
-  background-color: rgba(255, 255, 255, 0.05); /* พื้นหลังโปร่งแสงนิดๆ ให้ดูหรู */
-  color: #ffffff; /* บังคับไอคอนให้เป็นสีขาวเสมอ */
+  background-color: rgba(255, 255, 255, 0.05); 
+  color: #ffffff; 
   text-decoration: none;
-  border-radius: 50%; /* ทำให้กรอบเป็นวงกลม */
+  border-radius: 50%; 
   font-size: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15); /* กรอบขาวบางๆ */
+  border: 1px solid rgba(255, 255, 255, 0.15); 
   transition: var(--transition);
 }
 
 .social-icons a:hover {
-  background-color: var(--accent-color); /* เปลี่ยนพื้นหลังเป็นสีเขียวของแบรนด์ */
-  color: #ffffff; /* ไอคอนยังคงสีขาว */
+  background-color: var(--accent-color); 
+  color: #ffffff; 
   border-color: var(--accent-color);
-  transform: translateY(-5px); /* เอฟเฟกต์ลอยขึ้นนิดนึงตอนเอาเมาส์ชี้ */
-  box-shadow: 0 8px 20px rgba(116, 195, 77, 0.4); /* เรืองแสงสีเขียว */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 20px rgba(116, 195, 77, 0.4); 
 }
 
 /* =========================================
@@ -358,16 +360,13 @@ body {
 
 .resume-preview-img {
   max-width: 100%;
-  width: 400px; /* ขนาดรูป Resume */
+  width: 400px; 
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ดูมีมิติ */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
   margin-bottom: 25px;
 }
 
-/* =========================================
-   MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต)
-========================================= */
 /* =========================================
    MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต)
 ========================================= */
@@ -385,16 +384,16 @@ body {
   
   /* 🌟 แก้ปัญหาแบนเนอร์มือถือรูปโดนซูม/โดนตัด 🌟 */
   .swiper-container {
-    height: 60vw !important; /* ปรับความสูงให้พอดีกับความกว้างจอมือถือ (สัดส่วน 16:9) */
-    min-height: 0 !important; /* สำคัญมาก: ล็อกไม่ให้กล่องสูงเกินไปจนรูปต้องซูม */
+    height: 60vw !important; 
+    min-height: 0 !important; 
   }
 
   .slide-content {
-    padding-bottom: 15px !important; /* ขยับเนื้อหาและปุ่มให้พอดีกับกล่องที่เล็กลง */
+    padding-bottom: 15px !important; 
   }
   
   .slide-info-block h1 {
-    font-size: 20px !important; /* ลดขนาดตัวอักษรลงไม่ให้ล้นจอ */
+    font-size: 20px !important; 
     margin-bottom: 5px;
   }
   
