@@ -378,7 +378,7 @@ body {
   }
   
   .nav-links {
-    display: none; /* Mobile menu can be added via JS */
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -400,9 +400,19 @@ body {
   }
   
   .social-icons {
-    justify-content: center; /* จัดไอคอนไว้ตรงกลางในมือถือ */
+    justify-content: center;
   }
   
+  /* 🌟 แก้ไขแบนเนอร์ให้พอดีกับมือถือ 🌟 */
+  .swiper-container {
+    height: 60vw; /* ปรับความสูงให้แปรผันตามความกว้างของจอมือถือ */
+    min-height: 250px; /* ลดความสูงขั้นต่ำลง รูปจะได้ไม่โดนตัดขอบซ้ายขวา */
+  }
+  
+  .slide-content {
+    padding-bottom: 25px; /* ขยับปุ่มให้ลงมาพอดีกับกล่องแบนเนอร์ที่เตี้ยลง */
+  }
+
   .slide-info-block h1 {
       font-size: 1.8rem;
   }
