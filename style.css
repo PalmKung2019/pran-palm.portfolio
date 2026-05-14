@@ -368,53 +368,39 @@ body {
 /* =========================================
    MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต)
 ========================================= */
+/* =========================================
+   MEDIA QUERIES (สำหรับมือถือและแท็บเล็ต)
+========================================= */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 12px 20px;
-  }
-  
-  .menu-toggle {
-    display: block;
-  }
-  
+  .navbar { padding: 12px 20px; }
+  .menu-toggle { display: block; }
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    padding: 20px;
-    gap: 15px;
+    display: none; position: absolute; top: 100%; left: 0; width: 100%;
+    background: #fff; flex-direction: column; padding: 20px; gap: 15px;
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
   }
+  .nav-links.active { display: flex; }
+  .product-container { flex-direction: column; text-align: center; }
+  .social-icons { justify-content: center; }
   
-  .nav-links.active {
-      display: flex;
-  }
-
-  .product-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .social-icons {
-    justify-content: center;
-  }
-  
-  /* 🌟 แก้ไขแบนเนอร์ให้พอดีกับมือถือ 🌟 */
+  /* 🌟 แก้ปัญหาแบนเนอร์มือถือรูปโดนซูม/โดนตัด 🌟 */
   .swiper-container {
-    height: 60vw; /* ปรับความสูงให้แปรผันตามความกว้างของจอมือถือ */
-    min-height: 250px; /* ลดความสูงขั้นต่ำลง รูปจะได้ไม่โดนตัดขอบซ้ายขวา */
-  }
-  
-  .slide-content {
-    padding-bottom: 25px; /* ขยับปุ่มให้ลงมาพอดีกับกล่องแบนเนอร์ที่เตี้ยลง */
+    height: 60vw !important; /* ปรับความสูงให้พอดีกับความกว้างจอมือถือ (สัดส่วน 16:9) */
+    min-height: 0 !important; /* สำคัญมาก: ล็อกไม่ให้กล่องสูงเกินไปจนรูปต้องซูม */
   }
 
+  .slide-content {
+    padding-bottom: 15px !important; /* ขยับเนื้อหาและปุ่มให้พอดีกับกล่องที่เล็กลง */
+  }
+  
   .slide-info-block h1 {
-      font-size: 1.8rem;
+    font-size: 20px !important; /* ลดขนาดตัวอักษรลงไม่ให้ล้นจอ */
+    margin-bottom: 5px;
+  }
+  
+  .slide-info-block p {
+    font-size: 12px !important;
+    margin-bottom: 15px;
   }
 }
 
